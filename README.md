@@ -19,9 +19,9 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## To Do List
-[] Create layout for home
-[] Create search bar to enable user search movie
-[] Create page for movie detail
-[] Show modal if user click on movie poster
-[] Update the search bar to autocomplete
-[] Implement an Infinite Scroll with
+- [ ] Create layout for home
+- [ ] Create search bar to enable user search movie
+- [ ] Create page for movie detail
+- [ ] Show modal if user click on movie poster
+- [ ] Update the search bar to autocomplete
+- [ ] Implement an Infinite Scroll with
