@@ -21,7 +21,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## To Do List
 - [x] Create layout for home
 - [x] Create search bar to enable user search movie
-- [ ] Create page for movie detail
+- [x] Create page for movie detail
 - [ ] Show modal if user click on movie poster
 - [ ] Update the search bar to autocomplete
 - [ ] Implement an Infinite Scroll with native javascript
