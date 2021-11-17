@@ -26,6 +26,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Create layout for home
 - [x] Create search bar to enable user search movie
 - [x] Create page for movie detail
-- [ ] Show modal if user click on movie poster
+- [x] Show modal if user click on movie poster
 - [ ] Update the search bar to autocomplete
 - [ ] Implement an Infinite Scroll with native javascript
