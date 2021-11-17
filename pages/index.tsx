@@ -6,8 +6,15 @@ import Card from "../components/Card";
 import Input from "../components/Input";
 
 const Home: NextPage = () => {
+  interface IMovies {
+    Title: string;
+    Year: string;
+    Poster: string;
+    imdbID: string;
+  }
+
   const API_KEY = process.env.NEXT_PUBLIC_OMDB_API_KEY;
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState<IMovies[]>([]);
   const [search, setSearch] = useState("");
 
   async function fetchMovies(searchValue: string) {
@@ -18,7 +25,7 @@ const Home: NextPage = () => {
     setMovies(data.Search);
   }
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: any) => {
     setSearch(e.target.value);
   };
 
