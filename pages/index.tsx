@@ -1,37 +1,17 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Card from "../components/Card";
 import Input from "../components/Input";
+import { MovieContext } from "../context/MovieContext";
 
 const Home: NextPage = () => {
-  interface IMovies {
-    Title: string;
-    Year: string;
-    Poster: string;
-    imdbID: string;
-  }
-
-  const API_KEY = process.env.NEXT_PUBLIC_OMDB_API_KEY;
-  const [movies, setMovies] = useState<IMovies[]>([]);
-  const [search, setSearch] = useState("");
-
-  async function fetchMovies(searchValue: string) {
-    const response = await fetch(
-      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchValue}`
-    );
-    const data = await response.json();
-    setMovies(data.Search);
-  }
+  const { movies, setSearch } = useContext(MovieContext);
 
   const handleSearch = (e: any) => {
     setSearch(e.target.value);
   };
-
-  useEffect(() => {
-    fetchMovies(search);
-  }, [search]);
 
   return (
     <div className="flex flex-col items-center min-h-screen">

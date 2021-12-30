@@ -1,8 +1,13 @@
-import 'tailwindcss/tailwind.css'
-import type { AppProps } from 'next/app'
+import "tailwindcss/tailwind.css";
+import type { AppProps } from "next/app";
+import { MovieContextProvider } from "../context/MovieContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <MovieContextProvider>
+      <Component {...pageProps} />
+    </MovieContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
