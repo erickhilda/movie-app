@@ -2,14 +2,19 @@ import type { NextPage } from "next";
 import { useContext } from "react";
 import Card from "../components/Card";
 import Input from "../components/Input";
-import { MovieContext } from "../context/MovieContext";
+import { MovieContext, IMovie } from "../context/MovieContext";
 import Layout from "../components/Layout";
 
 const Home: NextPage = () => {
-  const { movies, setSearch } = useContext(MovieContext);
+  const { movies, setSearch, bookmarkHandler, bookmark } =
+    useContext(MovieContext);
 
   const handleSearch = (e: any) => {
     setSearch(e.target.value);
+  };
+
+  const isBookmarked = (movie: IMovie) => {
+    return bookmark.some((item) => item.imdbID === movie.imdbID);
   };
 
   return (
@@ -24,6 +29,8 @@ const Home: NextPage = () => {
               title={item.Title}
               releasedYear={item.Year}
               id={item.imdbID}
+              isBookmarked={isBookmarked(item)}
+              handleBookmark={(e) => bookmarkHandler(item, e)}
             />
           ))}
         </div>

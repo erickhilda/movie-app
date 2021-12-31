@@ -13,6 +13,7 @@ export interface IMovie {
   Plot: string;
   Actors: string;
   Ratings: Array<IRating>;
+  isBookmarked: boolean;
 }
 
 export interface IRating {
@@ -25,6 +26,8 @@ export const MovieContext = createContext({
   setSearch: (search: string) => {},
   movieDetails: {} as IMovie,
   getMovieDetails: (id: string) => {},
+  bookmark: [] as IMovie[],
+  bookmarkHandler: (movie: IMovie, e: any) => {},
 });
 
 export interface IMovieProviderProps {
@@ -57,9 +60,40 @@ export function MovieContextProvider({ children }: IMovieProviderProps) {
     setMovieDetails(movie);
   }
 
+  const [bookmark, setBookmark] = useState<IMovie[]>([]);
+
+  const addBookmark = (movie: IMovie) => {
+    setBookmark((prevBookmark) => [
+      ...prevBookmark,
+      { ...movie, isBookmarked: true },
+    ]);
+  };
+
+  const removeBookmark = (movie: IMovie) => {
+    setBookmark((prevBookmark) =>
+      prevBookmark.filter((m) => m.imdbID !== movie.imdbID)
+    );
+  };
+
+  const bookmarkHandler = (movie: IMovie, e: any) => {
+    e.preventDefault();
+    if (bookmark.some((item) => item.imdbID === movie.imdbID)) {
+      removeBookmark(movie);
+    } else {
+      addBookmark(movie);
+    }
+  };
+
   return (
     <MovieContext.Provider
-      value={{ movies, setSearch, movieDetails, getMovieDetails }}
+      value={{
+        movies,
+        setSearch,
+        movieDetails,
+        getMovieDetails,
+        bookmark,
+        bookmarkHandler,
+      }}
     >
       {children}
     </MovieContext.Provider>
