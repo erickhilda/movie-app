@@ -39,7 +39,7 @@ const Card = ({
       <img
         src={image}
         alt={title}
-        className="w-full rounded-t-lg max-h-72"
+        className="w-full rounded-t-lg h-72 object-cover"
         onClick={showModal}
       />
       <div className="flex flex-1 flex-col p-2">
@@ -55,7 +55,6 @@ const Card = ({
           </Link>
         </div>
       </div>
-      <div>modal components</div>
       <Modal isOpen={modalIsOpen} style={customStyles}>
         <button
           className="absolute bg-white p-2 right-0 rounded-full m-2"
